@@ -1,0 +1,166 @@
+# Task_1
+## Написать программу, которая отобразит Ваше ФИО и адрес
+print('Porechnyi Dmitriy Gennadevich from Novosibirsk')
+# Task_2
+## Напишите программу, которая предлагает ввести пользователю свой возраст, и отображает возраст в месяцах. Можно использовать встроенную функцию input()
+
+x=int(input('enter ur day'))
+y=int(input('enter ur mounth'))
+z=int(input('enter ur age'))
+mounths=(2023-z)*12+x/30+y
+print(mounths)
+# Task_3
+## Даны три целых числа. Найдите наибольшее из них (программа должна вывести ровно одно целое число).
+x=int(input('enter ur number'))
+y=int(input('enter ur number'))
+z=int(input('enter ur number'))
+print(max(x,y,z))
+# Task_4
+## Дано натуральное число. Требуется определить, является ли год с данным номером високосным. Если год является високосным, то выведите YES, иначе выведите NО. Напомним, что в соответствии с григорианским календарем, год является високосным, если его номер кратен 4, но не кратен 100, или же если он кратен 400.
+x=int(input('enter ur number'))
+y=x%4
+z=x%100
+if y==0 and z!=0:
+    print('leap year');
+else:
+    print('non - leap year')
+# Task_5
+## Дано натуральное число М. Выведите слово YES, если число М является точной степенью двойки, или слово NО в противном случае. Операцией возведения в степень пользоваться нельзя!
+x=int(input('enter ur number'))
+y=x%2
+if y==0:
+     print('yes');
+else:
+    print('no')
+# Task_6
+## Даны пять действительных чисел: x, y, xc, yc, r. Проверьте, принадлежит ли точка (x, y) кругу с центром (xc, yc) и радиусом r. Если точка принадлежит кругу, выведите слово YES, иначе выведите слово NO. Решение должно содержать функцию is_point_in_circle(x, y, xc, yc, r), возвращающую True, если точка принадлежит кругу и False, если не принадлежит. Основная программа должна считать координаты точки, вызвать функцию is_point_in_circle и в зависимости от возвращенного значения вывести на экран необходимое сообщение. Функция is_point_in_circle не должна содержать инструкцию if.
+def is_point_in_circle(x, y, xc, yc, r):
+    return (x - xc) ** 2 + (y - yc) ** 2 <= r ** 2;
+x = float(input("Enter the coordinate x: "))
+y = float(input("Enter the coordinate y: "))
+xc = float(input("Enter the coordinate of the center of the circle on the x axis: "))
+yc = float(input("Enter the coordinate of the center of the circle on the y axis: "))
+r = float(input("Enter the radius of the circle: "))
+if is_point_in_circle(x, y, xc, yc, r):
+    print("YES")
+else:
+    print("NO")
+# Task_7
+## Напишите рекурсивную функцию summ(a, b), возвращающую сумму двух целых неотрицательных чисел. Из всех арифметических операций допускаются только +1 и -1. Также нельзя использовать циклы.
+a=int(input('enter ur number'))
+b=int(input('enter ur number'))
+def summ(a, b):
+    if a == 0:
+        return b
+    elif b == 0:
+        return a
+    elif a > b:
+        return summ(a - 1, b) + 1
+    else:
+        return summ(a, b - 1) + 1
+print(summ(a, b))
+
+for num in range(10, 100):
+    tens_digit = num // 10
+    ones_digit = num % 10
+    product = tens_digit * ones_digit
+    if num == 2 * product:
+        print(num)
+# Task_8
+## Найдите и выведите все двузначные числа, которые равны удвоенному произведению своих цифр.
+for num in range(10, 100):
+    doubled_num = num * 2
+    a = num // 10
+    b = num % 10
+    c = (a * 2) * (b * 2)
+    
+    if doubled_num == c:
+        print(num)
+
+# Task_9
+## Дан список (Вводится с клавиатуры. Все числа списка находятся на одной строке), упорядоченный по неубыванию элементов в нем. Определите, сколько в нем различных элементов.
+numbers = input("enter ur numbers").split()
+numbers = [int(num) for num in numbers]
+count = 1
+for i in range(1, len(numbers)):
+    if numbers[i] != numbers[i-1]:
+        count += 1
+
+print("Number of different elements:", count)
+
+# Task_10
+## Для каждого человека задан возраст и его имя. Необходимо упорядочить их по убыванию возраста, а в случае одинакового возраста - в алфавитном порядке.
+people = [
+    {'name': 'Dimas', 'age': 24},
+    {'name': 'Kirill', 'age': 24},
+    {'name': 'Rodion', 'age': 25},
+    {'name': 'Denis', 'age': 32}
+]
+sorted_people = sorted(people, key=lambda p: (-p['age'], p['name']))
+for person in sorted_people:
+    print(f"Name: {person['name']}, Age: {person['age']}")
+
+# Task_11
+## Во входной строке записана последовательность чисел через пробел. Для каждого числа определить встречалось ли оно ранее и вывести yes или no. Использовать операции работы с множествами
+
+numbers = input("Введите последовательность чисел через пробел: ").split()
+
+seen_numbers = set()
+result = []
+
+for num in numbers:
+    if num in seen_numbers:
+        result.append("yes")
+    else:
+        result.append("no")
+        seen_numbers.add(num)
+
+print(*result)
+
+# Task_12
+## Дан список стран и городов каждой страны. Затем даны названия городов. Для каждого города укажите, в какой стране он находится. Формат ввода: Программа получает на вход количество стран N. Далее идет N строк, каждая строка начинается с названия страны, затем идут названия городов этой страны. Название каждого город состоит из одного слова. В следующей строке записано число M, далее идут M запросов — названия каких-то M городов, перечисленных выше. Формат вывода: Для каждого из запроса выведите название страны, в котором находится данный город.
+N = int(input("number of countries:"))
+all_cities = [("Санкт-Петербург"), ("Колпино"),("Чикаго"), ("Вашингтон")]
+s = 0
+for i in range(N):
+    all_cities.append(list(input("Страны и города:").split()))
+# print(all_cities)
+M = int(input())
+answer = []
+for i in range(M):
+    search_town = input("Город")
+    for countries in all_cities:
+        for town in countries:
+            if town == search_town:
+                answer.append(countries[0])
+                s = 1
+            if s == 1:
+                break
+        if s == 1:
+            s = 0
+            break
+print(answer)
+# Функция для поиска страны по городу
+def find_country(city, countries):
+    for country, cities_list in countries.items():
+        if city in cities_list:
+            return country
+    return "Город не найден"
+
+# Ввод данных
+n = int(input("Введите количество стран: "))
+countries = {}
+
+for _ in range(n):
+    line = input().split()
+    country = line[0]
+    cities = line[1:]
+    countries[country] = cities
+
+m = int(input("Введите количество запросов: "))
+queries = [input() for _ in range(m)]
+
+# Поиск страны для каждого запроса
+for query in queries:
+    country_found = find_country(query, countries)
+    print(country_found)
